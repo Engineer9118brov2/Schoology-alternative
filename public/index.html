@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schoology Alternative</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://alcdn.msauth.net/browser/2.19.1/js/msal-browser.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Signup</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="auth">
+            <h2>Log-in with: </h2>
+            <button id="clever-login">Login with Clever</button>
+            <button id="google-login">Login with Google</button>
+            <button id="microsoft-login">Login with Microsoft</button>
+            <button id="test-bypass">Test (bypass the login)</button>
+            <p>Don't have an account? <a href="#">Signup here</a>.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Schoology Alternative</p>
+    </footer>
+    <script>
+        // Google Login
+        function onGoogleSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            alert('Logged in as: ' + profile.getName());
+        }
+
+        document.getElementById('google-login').onclick = function() {
+            gapi.load('auth2', function() {
+                auth2 = gapi.auth2.init({
+                    client_id: 'YOUR_GOOGLE_CLIENT_ID',
+                });
+                auth2.signIn().then(onGoogleSignIn);
+            });
+        };
+
+        // Microsoft Login
+        const msalConfig = {
+            auth: {
+                clientId: 'YOUR_MICROSOFT_CLIENT_ID',
+            }
+        };
+        const msalInstance = new msal.PublicClientApplication(msalConfig);
+
+        document.getElementById('microsoft-login').onclick = function() {
+            msalInstance.loginPopup().then(function(loginResponse) {
+                alert('Logged in as: ' + loginResponse.account.name);
+            }).catch(function(error) {
+                console.error(error);
+            });
+        };
+
+        // Clever Login
+        document.getElementById('clever-login').onclick = function() {
+            alert('Clever login functionality to be implemented.');
+        };
+
+            // Test bypass button
+            document.getElementById('test-bypass').onclick = function() {
+                document.querySelector('.container').style.display = 'none';
+                document.getElementById('schoology-page').style.display = 'block';
+            };
+    </script>
+</body>
+</html>
