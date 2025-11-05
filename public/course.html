@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="schoology.html">Dashboard</a></li>
+                <li><a href="#assignments" class="active">Assignments</a></li>
+                <li><a href="#plugins">Plugins</a></li>
+                <li><a href="#grades">Grades</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="course-page">
+        <section id="course-header">
+            <h2 id="course-title">Course Name</h2>
+            <p id="course-desc">Course description and details go here.</p>
+        </section>
+        <section id="plugins">
+            <h3>Course Plugins</h3>
+            <ul class="plugin-list">
+                <li>Zearn <button>Open</button></li>
+                <li>i-Ready <button>Open</button></li>
+                <li>Google Classroom <button>Open</button></li>
+                <li>Khan Academy <button>Open</button></li>
+            </ul>
+        </section>
+        <section id="assignments">
+            <h3>Assignments & Grades</h3>
+            <table class="grades-table">
+                <thead>
+                    <tr><th>Assignment</th><th>Grade</th><th>Due Date</th></tr>
+                </thead>
+                <tbody id="assignment-list">
+                    <tr><td>Homework 1</td><td>95%</td><td>Nov 3, 2025</td></tr>
+                    <tr><td>Quiz 1</td><td>88%</td><td>Nov 6, 2025</td></tr>
+                    <tr><td>Project</td><td>100%</td><td>Nov 10, 2025</td></tr>
+                </tbody>
+            </table>
+            <div class="overall-grade">
+                <strong>Overall Grade:</strong> <span id="overall-grade">A</span>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Schoology Alternative</p>
+    </footer>
+    <script>
+        // Example: Dynamically set course info (simulate user/session)
+        const params = new URLSearchParams(window.location.search);
+        const course = params.get('course') || 'Math 101';
+        document.getElementById('course-title').textContent = course;
+        document.getElementById('course-desc').textContent = `Welcome to ${course}. Here you can view assignments, grades, and access course plugins.`;
+        // TODO: Fetch assignments/grades/plugins per user/course from backend
+    </script>
+</body>
+</html>
