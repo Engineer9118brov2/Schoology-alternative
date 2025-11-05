@@ -8,22 +8,22 @@
 
 /* -- CSS Variables -- */
 :root {
-    --primary-color: #1976d2;
-    --primary-color-dark: #1565c0;
-    --secondary-color: #f1c40f;
-    --background-color: #f4f6fa;
-    --text-color: #333;
+    --primary-color: #007bff; /* A brighter, more modern blue */
+    --primary-color-dark: #0056b3;
+    --secondary-color: #6c757d; /* A neutral secondary color */
+    --background-color: #f8f9fa; /* A lighter background */
+    --text-color: #343a40; /* Darker text for better readability */
     --text-color-light: #fff;
-    --border-color: #ddd;
-    --header-background: #34495e;
-    --card-background: #fff;
-    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --border-color: #dee2e6; /* Softer border color */
+    --header-background: #ffffff; /* White header for a cleaner look */
+    --card-background: #ffffff;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     --button-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* -- General Styles -- */
 body {
-    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
     background-color: var(--background-color);
     margin: 0;
     color: var(--text-color);
@@ -33,29 +33,30 @@ body {
 /* -- Header & Navigation -- */
 header {
     background-color: var(--header-background);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--border-color);
 }
 
 header nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
-    max-width: 1200px;
+    height: 64px; /* Increased height */
+    max-width: 1400px; /* Wider layout */
     margin: 0 auto;
     padding: 0 2rem;
 }
 
 header .logo a {
-    color: var(--text-color-light);
+    color: var(--primary-color);
     text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.75rem;
+    font-weight: 700; /* Bolder */
     transition: color 0.3s;
 }
 
 header .logo a:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color-dark);
 }
 
 header nav ul {
@@ -66,27 +67,42 @@ header nav ul {
 }
 
 header nav ul li {
-    margin-right: 2rem;
+    margin-right: 2.5rem; /* Increased spacing */
 }
 
 header nav ul li a {
-    color: var(--text-color-light);
+    color: var(--text-color);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600; /* Bolder */
     font-size: 1.1rem;
     transition: color 0.3s;
 }
 
 header nav ul li a:hover,
 header nav ul li a.active {
-    color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+/* -- Main Content Layout -- */
+.main-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr 300px; /* Three-column layout */
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.left-sidebar, .main-content, .right-sidebar {
+    background-color: var(--card-background);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
 }
 
 /* -- Main Content -- */
 main {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 0; /* Remove default padding */
 }
 
 /* -- Authentication Page -- */
@@ -133,57 +149,26 @@ main {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-#auth button:hover {
-    background-color: var(--primary-color-dark);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-#auth p {
-    margin-top: 1.5rem;
-}
-
-#auth a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 500;
-}
-
-#auth a:hover {
-    text-decoration: underline;
-}
-
 /* -- Schoology Dashboard -- */
-.dashboard-header {
-    background: var(--primary-color);
-    color: var(--text-color-light);
-    padding: 2rem;
-    border-radius: 12px;
-    margin-bottom: 2rem;
-    text-align: center;
+.feed-header {
+    margin-bottom: 1.5rem;
 }
 
-.dashboard-header h1 {
+.feed-header h1 {
+    font-size: 2rem;
     margin: 0;
-    font-size: 2.5rem;
 }
 
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-#schoology-page section {
-    background-color: var(--card-background);
-    padding: 2rem;
+.feed-item {
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
     border-radius: 12px;
-    box-shadow: var(--card-shadow);
+    margin-bottom: 1.5rem;
 }
 
-#schoology-page h2,
-#schoology-page h3 {
-    color: var(--primary-color);
+.feed-item h3 {
     margin-top: 0;
+    color: var(--primary-color);
 }
 
 /* -- Course Page -- */
@@ -200,31 +185,30 @@ main {
     font-size: 2.5rem;
 }
 
-.course-grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 2rem;
+/* -- Sidebar styles -- */
+.widget {
+    margin-bottom: 2rem;
 }
 
-.plugin-btn {
-    background-color: var(--primary-color);
-    color: var(--text-color-light);
-    border: none;
-    border-radius: 8px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.widget h3 {
+    font-size: 1.25rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
-.plugin-btn:hover {
-    background-color: var(--primary-color-dark);
+.widget ul {
+    list-style: none;
+    padding: 0;
 }
 
-#course-page section {
-    background-color: var(--card-background);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: var(--card-shadow);
+.widget ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.widget ul li:last-child {
+    border-bottom: none;
 }
 
 /* -- Tables -- */
@@ -242,34 +226,13 @@ main {
 }
 
 .grades-table th {
-    background-color: var(--primary-color);
-    color: var(--text-color-light);
+    background-color: #f8f9fa; /* Lighter header */
+    color: var(--text-color);
     font-weight: 600;
 }
 
 .grades-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-/* -- Lists -- */
-.messages-list,
-.plugin-list,
-#courses ul {
-    list-style: none;
-    padding: 0;
-}
-
-.message,
-.plugin-list li,
-#courses li {
-    background-color: #fff;
-    padding: 1rem;
-    margin-bottom: 0.5rem;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background-color: #f8f9fa;
 }
 
 /* -- Footer -- */
@@ -279,18 +242,19 @@ footer {
     color: #888;
 }
 
-/* -- Calendar -- */
-.calendar-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
+/* -- Responsive Design -- */
+@media (max-width: 1200px) {
+    .main-layout {
+        grid-template-columns: 200px 1fr 250px; /* Adjust for smaller screens */
+    }
 }
-.calendar-table th, .calendar-table td {
-    border: 1px solid var(--border-color);
-    text-align: center;
-    padding: 0.5rem;
-}
-.calendar-table th {
-    background-color: var(--primary-color);
-    color: var(--text-color-light);
+
+@media (max-width: 992px) {
+    .main-layout {
+        grid-template-columns: 1fr; /* Stack columns on tablets */
+    }
+
+    .left-sidebar, .right-sidebar {
+        display: none; /* Hide sidebars on smaller screens for simplicity */
+    }
 }
