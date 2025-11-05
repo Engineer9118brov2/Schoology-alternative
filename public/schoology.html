@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schoology Dashboard</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -13,109 +14,74 @@
                 <a href="index.html">Schoology</a>
             </div>
             <ul>
-                <li><a href="#" class="active">Dashboard</a></li>
-                <li><a href="#courses">Courses</a></li>
-                <li><a href="#grades">Grades</a></li>
-                <li><a href="#messages">Messages</a></li>
-                <li><a href="#calendar">Calendar</a></li>
+                <li><a href="#notifications">Notifications</a></li>
+                <li><a href="#profile">Profile</a></li>
                 <li><a href="index.html">Logout</a></li>
             </ul>
         </nav>
     </header>
-    <main id="schoology-page">
-        <header class="dashboard-header">
-            <h1>Welcome Back!</h1>
-            <p>Here's a quick overview of your courses, grades, and upcoming events.</p>
-        </header>
-        <div class="dashboard-grid">
-            <section id="courses" class="grid-item">
-            <h3>Your Courses</h3>
-            <ul>
-                <li>
-                    <strong>Math 101</strong>
-                    <span class="course-actions">
-                        <a href="course.html?course=Math%20101"><button>Open Course</button></a>
-                        <button>Zearn</button>
-                        <button>i-Ready</button>
-                        <button>Google Classroom</button>
-                    </span>
-                </li>
-                <li>
-                    <strong>English Literature</strong>
-                    <span class="course-actions">
-                        <a href="course.html?course=English%20Literature"><button>Open Course</button></a>
-                        <button>Khan Academy</button>
-                        <button>Google Classroom</button>
-                    </span>
-                </li>
-                <li>
-                    <strong>Biology</strong>
-                    <span class="course-actions">
-                        <a href="course.html?course=Biology"><button>Open Course</button></a>
-                        <button>Google Classroom</button>
-                    </span>
-                </li>
-            </ul>
-            </section>
-            <section id="grades" class="grid-item">
-            <h3>Grades</h3>
-            <table class="grades-table">
-                <thead>
-                    <tr><th>Course</th><th>Grade</th><th>Last Updated</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Math 101</td><td>A</td><td>Nov 1, 2025</td></tr>
-                    <tr><td>English Literature</td><td>B+</td><td>Oct 28, 2025</td></tr>
-                    <tr><td>Biology</td><td>A-</td><td>Oct 30, 2025</td></tr>
-                </tbody>
-            </table>
-            </section>
-            <section id="messages" class="grid-item">
-            <h3>Messages</h3>
-            <div class="messages-list">
-                <div class="message">
-                    <strong>Teacher:</strong> Welcome to the new semester!
-                    <span class="timestamp">Nov 2, 2025</span>
-                </div>
-                <div class="message">
-                    <strong>Admin:</strong> School will be closed on Nov 11.
-                    <span class="timestamp">Nov 1, 2025</span>
-                </div>
+    <div class="main-layout">
+        <aside class="left-sidebar">
+            <div class="widget">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="#" class="active">Dashboard</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#grades">Grades</a></li>
+                    <li><a href="#messages">Messages</a></li>
+                    <li><a href="#calendar">Calendar</a></li>
+                </ul>
             </div>
-            </section>
-            <section id="calendar" class="grid-item">
-            <h3>Calendar</h3>
-            <div id="calendar-area"></div>
-        </section>
+            <div class="widget">
+                <h3>Your Courses</h3>
+                <ul>
+                    <li><a href="course.html?course=Math%20101">Math 101</a></li>
+                    <li><a href="course.html?course=English%20Literature">English Literature</a></li>
+                    <li><a href="course.html?course=Biology">Biology</a></li>
+                </ul>
+            </div>
+        </aside>
+        <main class="main-content">
+            <div class="feed-header">
+                <h1>Recent Activity</h1>
+            </div>
+            <div class="feed-item">
+                <h3>Math 101</h3>
+                <p><strong>New Assignment:</strong> Chapter 5 Homework is due on Nov 10.</p>
+                <a href="course.html?course=Math%20101"><button>Go to Course</button></a>
+            </div>
+            <div class="feed-item">
+                <h3>English Literature</h3>
+                <p><strong>Grade Update:</strong> Your essay "Themes in Shakespeare" has been graded: B+.</p>
+                <a href="course.html?course=English%20Literature"><button>Go to Course</button></a>
+            </div>
+            <div class="feed-item">
+                <h3>Biology</h3>
+                <p><strong>Announcement:</strong> The midterm exam will be on Nov 15. A study guide has been posted.</p>
+                <a href="course.html?course=Biology"><button>Go to Course</button></a>
+            </div>
+        </main>
+        <aside class="right-sidebar">
+            <div class="widget">
+                <h3>Upcoming</h3>
+                <ul>
+                    <li><strong>Nov 10:</strong> Math 101 - Ch. 5 Homework Due</li>
+                    <li><strong>Nov 12:</strong> English Lit - Quiz on Hamlet</li>
+                    <li><strong>Nov 15:</strong> Biology - Midterm Exam</li>
+                </ul>
+            </div>
+            <div class="widget">
+                <h3>Recent Grades</h3>
+                <ul>
+                    <li>Math 101: <strong>A</strong></li>
+                    <li>English Literature: <strong>B+</strong></li>
+                    <li>Biology: <strong>A-</strong></li>
+                </ul>
+            </div>
+        </aside>
     </div>
-    </main>
     <footer>
         <p>&copy; 2025 Schoology Alternative</p>
     </footer>
-    <script>
-        // Simple calendar rendering (replace with full calendar library for advanced features)
-        function renderCalendar() {
-            const calendarArea = document.getElementById('calendar-area');
-            calendarArea.innerHTML = '';
-            const today = new Date();
-            const month = today.getMonth();
-            const year = today.getFullYear();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-            let html = `<table class="calendar-table"><thead><tr>`;
-            const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-            for (let d of days) html += `<th>${d}</th>`;
-            html += `</tr></thead><tbody><tr>`;
-            let firstDay = new Date(year, month, 1).getDay();
-            for (let i = 0; i < firstDay; i++) html += `<td></td>`;
-            for (let day = 1; day <= daysInMonth; day++) {
-                let date = new Date(year, month, day);
-                if ((firstDay + day - 1) % 7 === 0 && day !== 1) html += `</tr><tr>`;
-                html += `<td>${day}</td>`;
-            }
-            html += `</tr></tbody></table>`;
-            calendarArea.innerHTML = html;
-        }
-        renderCalendar();
-    </script>
 </body>
 </html>
