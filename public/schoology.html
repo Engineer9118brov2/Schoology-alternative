@@ -9,6 +9,9 @@
 <body>
     <header>
         <nav>
+            <div class="logo">
+                <a href="index.html">Schoology</a>
+            </div>
             <ul>
                 <li><a href="#" class="active">Dashboard</a></li>
                 <li><a href="#courses">Courses</a></li>
@@ -20,11 +23,12 @@
         </nav>
     </header>
     <main id="schoology-page">
-        <section id="dashboard">
-            <h2>Welcome to Schoology</h2>
-            <p>Your learning dashboard. Quick access to courses, grades, messages, and more.</p>
-        </section>
-        <section id="courses">
+        <header class="dashboard-header">
+            <h1>Welcome Back!</h1>
+            <p>Here's a quick overview of your courses, grades, and upcoming events.</p>
+        </header>
+        <div class="dashboard-grid">
+            <section id="courses" class="grid-item">
             <h3>Your Courses</h3>
             <ul>
                 <li>
@@ -52,8 +56,8 @@
                     </span>
                 </li>
             </ul>
-        </section>
-        <section id="grades">
+            </section>
+            <section id="grades" class="grid-item">
             <h3>Grades</h3>
             <table class="grades-table">
                 <thead>
@@ -65,8 +69,8 @@
                     <tr><td>Biology</td><td>A-</td><td>Oct 30, 2025</td></tr>
                 </tbody>
             </table>
-        </section>
-        <section id="messages">
+            </section>
+            <section id="messages" class="grid-item">
             <h3>Messages</h3>
             <div class="messages-list">
                 <div class="message">
@@ -78,42 +82,17 @@
                     <span class="timestamp">Nov 1, 2025</span>
                 </div>
             </div>
-        </section>
-        <section id="calendar">
+            </section>
+            <section id="calendar" class="grid-item">
             <h3>Calendar</h3>
             <div id="calendar-area"></div>
         </section>
+    </div>
     </main>
     <footer>
         <p>&copy; 2025 Schoology Alternative</p>
     </footer>
     <script>
-        // Simple navigation logic for demo
-        document.querySelectorAll('header nav ul li a').forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                if (link.getAttribute('href') === 'index.html') return;
-                e.preventDefault();
-                document.querySelectorAll('main section').forEach(function(sec) {
-                    sec.style.display = 'none';
-                });
-                var target = link.getAttribute('href').replace('#','');
-                if (target && document.getElementById(target)) {
-                    document.getElementById(target).style.display = 'block';
-                } else {
-                    document.getElementById('dashboard').style.display = 'block';
-                }
-                document.querySelectorAll('header nav ul li a').forEach(function(l) {
-                    l.classList.remove('active');
-                });
-                link.classList.add('active');
-            });
-        });
-        // Show dashboard by default
-        document.querySelectorAll('main section').forEach(function(sec) {
-            sec.style.display = 'none';
-        });
-        document.getElementById('dashboard').style.display = 'block';
-
         // Simple calendar rendering (replace with full calendar library for advanced features)
         function renderCalendar() {
             const calendarArea = document.getElementById('calendar-area');

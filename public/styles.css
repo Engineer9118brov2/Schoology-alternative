@@ -1,245 +1,296 @@
-#auth button, #test-bypass {
-	display: block;
-	width: 100%;
-	margin: 12px 0;
-	padding: 12px;
-	font-size: 1rem;
-	border-radius: 6px;
-	border: none;
-	background: linear-gradient(90deg, #1976d2 60%, #1565c0 100%);
-	color: #fff;
-	cursor: pointer;
-	font-weight: 500;
-	box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
-	letter-spacing: 0.02em;
-	transition: background 0.2s, box-shadow 0.2s;
-}
-#auth button:hover, #test-bypass:hover {
-	background: linear-gradient(90deg, #1565c0 60%, #1976d2 100%);
-	box-shadow: 0 4px 16px rgba(25, 118, 210, 0.16);
+/*
+* Schoology Alternative CSS
+*
+* This stylesheet provides a modern, clean, and responsive design for the
+* Schoology alternative web application. It uses CSS variables for easy
+* theme management and a consistent look and feel.
+*/
+
+/* -- CSS Variables -- */
+:root {
+    --primary-color: #1976d2;
+    --primary-color-dark: #1565c0;
+    --secondary-color: #f1c40f;
+    --background-color: #f4f6fa;
+    --text-color: #333;
+    --text-color-light: #fff;
+    --border-color: #ddd;
+    --header-background: #34495e;
+    --card-background: #fff;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --button-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.course-actions button {
-	background: #1976d2;
-	color: #fff;
-	border: none;
-	border-radius: 4px;
-	padding: 6px 14px;
-	margin-left: 8px;
-	font-size: 0.95rem;
-	cursor: pointer;
-	font-weight: 500;
-	transition: background 0.2s;
-}
-.course-actions button:hover {
-	background: #1565c0;
-}
-
-.grades-table {
-	width: 100%;
-	border-collapse: collapse;
-	margin-top: 12px;
-	background: #fff;
-	border-radius: 8px;
-	box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-	overflow: hidden;
-}
-.grades-table th, .grades-table td {
-	padding: 10px 16px;
-	text-align: left;
-}
-.grades-table th {
-	background: #e3f2fd;
-	color: #1976d2;
-	font-weight: 600;
-}
-.grades-table tr:nth-child(even) {
-	background: #f4f6fa;
-}
-
-.messages-list {
-	margin-top: 12px;
-}
-.message {
-	background: #fff;
-	border-radius: 6px;
-	box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-	padding: 10px 16px;
-	margin-bottom: 8px;
-	font-size: 1rem;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-.message .timestamp {
-	color: #888;
-	font-size: 0.95rem;
-	margin-left: 16px;
-}
-
-.calendar-list {
-	margin-top: 12px;
-	padding-left: 0;
-	list-style: none;
-}
-.calendar-list li {
-	background: #fff;
-	border-radius: 6px;
-	box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-	padding: 10px 16px;
-	margin-bottom: 8px;
-	font-size: 1rem;
-}
+/* -- General Styles -- */
 body {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	background: #e9ecf2;
-	margin: 0;
-	color: #222;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* -- Header & Navigation -- */
+header {
+    background-color: var(--header-background);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 header nav {
-	background: #34495e;
-	padding: 0;
-	margin-bottom: 0;
-	box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
+
+header .logo a {
+    color: var(--text-color-light);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header .logo a:hover {
+    color: var(--secondary-color);
+}
+
 header nav ul {
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	list-style: none;
-	margin: 0;
-	padding: 0 24px;
-	height: 48px;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
+
 header nav ul li {
-	margin-right: 32px;
+    margin-right: 2rem;
 }
+
 header nav ul li a {
-	color: #fff;
-	text-decoration: none;
-	font-weight: 500;
-	font-size: 1.1rem;
-	transition: color 0.2s;
-}
-header nav ul li a:hover {
-	color: #f1c40f;
+    color: var(--text-color-light);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s;
 }
 
+header nav ul li a:hover,
+header nav ul li a.active {
+    color: var(--secondary-color);
+}
+
+/* -- Main Content -- */
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* -- Authentication Page -- */
 #auth {
-	max-width: 420px;
-	margin: 48px auto 0 auto;
-	background: #fff;
-	border-radius: 8px;
-	box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-	padding: 32px 28px 24px 28px;
-}
-#auth h2 {
-	margin-top: 0;
-	font-size: 1.5rem;
-	color: #34495e;
-	font-weight: 600;
-}
-#auth button {
-	display: block;
-	width: 100%;
-	margin: 12px 0;
-	padding: 12px;
-	font-size: 1rem;
-	border-radius: 6px;
-	border: none;
-	background: #1976d2;
-	color: #fff;
-	cursor: pointer;
-	font-weight: 500;
-	letter-spacing: 0.02em;
-	transition: background 0.2s;
-}
-#auth button:hover {
-	background: #1565c0;
-}
-#auth a {
-	color: #1976d2;
-	text-decoration: none;
-	font-weight: 500;
-}
-#auth a:hover {
-	text-decoration: underline;
+    max-width: 480px;
+    margin: 3rem auto;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    padding: 2.5rem;
+    text-align: center;
 }
 
-#schoology-page {
-	max-width: 900px;
-	margin: 40px auto;
-	background: #fff;
-	border-radius: 12px;
-	box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-	padding: 0 0 32px 0;
+#auth h1 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
 }
-#schoology-page header {
-	background: #1976d2;
-	color: #fff;
-	border-radius: 12px 12px 0 0;
-	padding: 24px 32px 16px 32px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+
+.login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    color: var(--text-color-light);
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: var(--button-shadow);
 }
-#schoology-page h2 {
-	margin: 0;
-	font-size: 2rem;
-	font-weight: 700;
+
+.login-btn.clever { background-color: #2c7cff; }
+.login-btn.google { background-color: #db4437; }
+.login-btn.microsoft { background-color: #f25022; }
+.login-btn.test { background-color: #555; }
+
+.login-btn:hover {
+    opacity: 0.9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-#schoology-page nav {
-	display: flex;
-	gap: 16px;
+
+#auth button:hover {
+    background-color: var(--primary-color-dark);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-#schoology-page nav button {
-	background: #fff;
-	color: #1976d2;
-	border: none;
-	border-radius: 6px;
-	padding: 8px 18px;
-	font-size: 1rem;
-	cursor: pointer;
-	font-weight: 500;
-	transition: background 0.2s, color 0.2s;
+
+#auth p {
+    margin-top: 1.5rem;
 }
-#schoology-page nav button:hover {
-	background: #e3f2fd;
-	color: #1565c0;
+
+#auth a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
 }
-#schoology-page main {
-	padding: 32px;
+
+#auth a:hover {
+    text-decoration: underline;
 }
+
+/* -- Schoology Dashboard -- */
+.dashboard-header {
+    background: var(--primary-color);
+    color: var(--text-color-light);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
 #schoology-page section {
-	margin-bottom: 32px;
-	background: #f4f6fa;
-	border-radius: 8px;
-	padding: 24px;
-	box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
 }
+
+#schoology-page h2,
 #schoology-page h3 {
-	margin-top: 0;
-	font-size: 1.2rem;
-	color: #1976d2;
-	font-weight: 600;
+    color: var(--primary-color);
+    margin-top: 0;
 }
-#schoology-page ul {
-	list-style: none;
-	padding: 0;
+
+/* -- Course Page -- */
+.course-header {
+    background: var(--primary-color);
+    color: var(--text-color-light);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
 }
-#schoology-page ul li {
-	background: #fff;
-	margin-bottom: 8px;
-	padding: 10px 16px;
-	border-radius: 6px;
-	box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-	font-size: 1rem;
+
+.course-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
 }
+
+.course-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+.plugin-btn {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.plugin-btn:hover {
+    background-color: var(--primary-color-dark);
+}
+
+#course-page section {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+}
+
+/* -- Tables -- */
+.grades-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.grades-table th,
+.grades-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.grades-table th {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    font-weight: 600;
+}
+
+.grades-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* -- Lists -- */
+.messages-list,
+.plugin-list,
+#courses ul {
+    list-style: none;
+    padding: 0;
+}
+
+.message,
+.plugin-list li,
+#courses li {
+    background-color: #fff;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* -- Footer -- */
 footer {
-	text-align: center;
-	color: #888;
-	font-size: 0.95rem;
-	margin-top: 48px;
-	padding-bottom: 16px;
+    text-align: center;
+    padding: 2rem;
+    color: #888;
+}
+
+/* -- Calendar -- */
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+.calendar-table th, .calendar-table td {
+    border: 1px solid var(--border-color);
+    text-align: center;
+    padding: 0.5rem;
+}
+.calendar-table th {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
 }
